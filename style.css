@@ -48,3 +48,15 @@ body {
   justify-content: center;
   border: 1px solid #ccc;
 }
+
+.site-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #ffffff;
+  border: 2px solid #6666cc;
+  color: #333399;
+  letter-spacing: 1px;
+}
