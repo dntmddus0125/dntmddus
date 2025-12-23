@@ -137,3 +137,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// =====================
+// 일기 편집
+// =====================
+window.editDiary = (diaryId) => {
+  if(!adminMode) return alert("관리자 모드에서만 편집 가능합니다.");
+
+  const diary = diaries.find(d => d.id === diaryId);
+  if(!diary) return;
+
+  const newTitle = prompt("제목 수정:", diary.title);
+  if(!newTitle) return;
+  const newContent = prompt("내용 수정:", diary.content);
+  if(!newContent) return;
+
+  diary.title = newTitle;
+  diary.content = newContent;
+
+  renderDiaryList();
+  openDiary(diary.title, diary.date, diary.content);
+};
+
+// =====================
+// 일기 삭제
+// =====================
+window.deleteDiary = (diaryId) => {
+  if(!adminMode) return alert("관리자 모드에서만 삭제 가능합니다.");
+  const index = diaries.findIndex(d => d.id === diaryId);
+  if(index === -1) return;
+
+  if(confirm("정말 삭제하시겠습니까?")) {
+    diaries.splice(index, 1);
+    renderDiaryList();
+    backToList();
+  }
+};
