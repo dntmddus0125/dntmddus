@@ -6,20 +6,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="container">
 
     <!-- ===== 왼쪽 사이드바 ===== -->
     <aside class="left-bar">
 
+      <!-- 사이트 제목 -->
       <header class="site-header">
         <div class="site-title">우승연 아카이브</div>
       </header>
 
+      <!-- 아바타 -->
       <section class="avatar-section">
         <div class="avatar-box">아바타</div>
       </section>
 
+      <!-- 날짜 / 시간 -->
       <section class="time-section">
         <div class="time-box">
           <div id="date"></div>
@@ -27,6 +29,7 @@
         </div>
       </section>
 
+      <!-- 캘린더 -->
       <section class="calendar-section">
         <div class="calendar-box">
           <div class="calendar-header" id="calendar-title"></div>
@@ -34,12 +37,13 @@
         </div>
       </section>
 
+      <!-- 테마 변경 -->
       <section class="theme-section">
         <div class="theme-box">
           <div class="theme-title">테마</div>
-          <button id="theme-default">기본</button>
-          <button id="theme-dark">다크</button>
-          <button id="theme-pink">핑크</button>
+          <button onclick="setTheme('default')">기본</button>
+          <button onclick="setTheme('dark')">다크</button>
+          <button onclick="setTheme('pink')">핑크</button>
         </div>
       </section>
 
@@ -48,30 +52,26 @@
     <!-- ===== 오른쪽 메인 영역 ===== -->
     <main class="right-bar">
 
-      <!-- 관리자 & 새 일기 버튼 (오른쪽 위) -->
-      <div class="top-buttons">
-        <button id="admin-btn">관리자</button>
-        <button id="add-diary-btn">+ 새 일기</button>
+      <!-- 관리자 버튼과 새 일기 버튼 (오른쪽 위) -->
+      <div class="top-right-buttons">
+        <button onclick="enterAdmin()">관리자</button>
+        <button onclick="addNewDiary()">+ 새 일기</button>
       </div>
 
-      <!-- ===== 일기 목록 ===== -->
-      <section id="diary-list">
-        <header class="main-header">
-          <h2>최근 일기</h2>
-        </header>
-        <div class="diary-grid"></div>
-      </section>
+      <!-- ===== 일기 목록 화면 ===== -->
+      <section id="diary-list"></section>
 
-      <!-- ===== 일기 본문 ===== -->
-      <section id="diary-view" style="display:none;">
-        <button id="back-btn">← 목록으로</button>
-        <h2 id="diary-view-title"></h2>
-        <p id="diary-view-date"></p>
+      <!-- ===== 일기 본문 화면 ===== -->
+      <section id="diary-view" style="display: none;">
+        <button onclick="backToList()">← 목록으로</button>
+        <h2 id="diary-view-date"></h2>
         <div id="diary-view-content"></div>
+        <div id="diary-view-images"></div>
 
+        <!-- 관리자 전용 -->
         <div class="admin-controls">
-          <button class="edit-btn">편집</button>
-          <button class="delete-btn">삭제</button>
+          <button class="edit-btn" onclick="editDiary()">편집</button>
+          <button class="delete-btn" onclick="deleteDiary()">삭제</button>
         </div>
       </section>
 
