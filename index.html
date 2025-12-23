@@ -2,50 +2,104 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>웅니의 미니홈피</title>
+  <title>우승연 아카이브</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
 
-    <div class="left-bar">
-      <div class="site-title">우승연 아카이브</div>
-      <div class="avatar-box">아바타</div>
-      <div class="time-box">
-        <div id="date">2025년 12월 22일</div>
-        <div id="clock">00:00:00</div>
-      </div>
-      <div class="calendar-box">
-        <div class="calendar-header" id="calendar-title">2025년 12월</div>
-        <div class="calendar-grid" id="calendar"></div>
-      </div>
-      <div class="theme-box">
-        <div class="theme-title">테마</div>
-        <button onclick="setTheme('default')">기본</button>
-        <button onclick="setTheme('dark')">다크</button>
-        <button onclick="setTheme('pink')">핑크</button>
-      </div>
-      <div class="admin-box">
-        <button onclick="enterAdmin()">관리자</button>
-      </div>
-    </div>
+    <!-- ===== 왼쪽 사이드바 ===== -->
+    <aside class="left-bar">
 
-    <div class="right-bar">
-      <h2>최근 일기</h2>
-      <div class="diary-grid">
-        <div class="diary-item">
-        일기 1
-        <div>
-          <button class="edit-btn">편집</button>
-          <button class="delete-btn">삭제</button>
-          </div>
+      <!-- 사이트 제목 -->
+      <header class="site-header">
+        <div class="site-title">우승연 아카이브</div>
+      </header>
+
+      <!-- 아바타 -->
+      <section class="avatar-section">
+        <div class="avatar-box">아바타</div>
+      </section>
+
+      <!-- 날짜 / 시간 -->
+      <section class="time-section">
+        <div class="time-box">
+          <div id="date">2025년 12월 22일</div>
+          <div id="clock">00:00:00</div>
         </div>
-        <div class="diary-item">일기 2</div>
-        <div class="diary-item">일기 3</div>
-      </div>
-    </div>
+      </section>
+
+      <!-- 캘린더 -->
+      <section class="calendar-section">
+        <div class="calendar-box">
+          <div class="calendar-header" id="calendar-title">2025년 12월</div>
+          <div class="calendar-grid" id="calendar"></div>
+        </div>
+      </section>
+
+      <!-- 테마 변경 -->
+      <section class="theme-section">
+        <div class="theme-box">
+          <div class="theme-title">테마</div>
+          <button onclick="setTheme('default')">기본</button>
+          <button onclick="setTheme('dark')">다크</button>
+          <button onclick="setTheme('pink')">핑크</button>
+        </div>
+      </section>
+
+      <!-- 관리자 -->
+      <section class="admin-section">
+        <div class="admin-box">
+          <button onclick="enterAdmin()">관리자</button>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- ===== 오른쪽 메인 영역 ===== -->
+    <main class="right-bar">
+
+      <header class="main-header">
+        <h2>최근 일기</h2>
+      </header>
+
+      <!-- 일기 미리보기 그리드 -->
+      <section class="diary-section">
+        <div class="diary-grid">
+
+          <!-- 일기 카드 (미리보기용) -->
+          <div class="diary-item">
+            <div class="diary-preview">
+              <span class="diary-title">일기 1</span>
+            </div>
+
+            <!-- 관리자 전용 버튼 (연습용) -->
+            <div class="admin-controls">
+              <button class="edit-btn">편집</button>
+              <button class="delete-btn">삭제</button>
+            </div>
+          </div>
+
+          <div class="diary-item">
+            <div class="diary-preview">
+              <span class="diary-title">일기 2</span>
+            </div>
+          </div>
+
+          <div class="diary-item">
+            <div class="diary-preview">
+              <span class="diary-title">일기 3</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
 
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
