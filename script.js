@@ -54,3 +54,16 @@ function generateCalendar() {
 }
 
 generateCalendar();
+
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// 페이지 열릴 때 마지막 테마 적용
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.body.setAttribute('data-theme', savedTheme);
+} else {
+  document.body.setAttribute('data-theme', 'default');
+}
