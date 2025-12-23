@@ -1,84 +1,74 @@
-function updateClock() {
-  const now = new Date();
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>웅니의 미니홈피</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
 
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
+    <!-- 왼쪽 바 -->
+    <aside class="left-bar">
 
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
+      <!-- 사이트 제목 -->
+      <div class="site-title">우승연 아카이브</div>
 
-  const dateString = `${year}년 ${month}월 ${date}일`;
-  const timeString = `${hours}:${minutes}:${seconds}`;
+      <!-- 아바타 -->
+      <div class="avatar-box">아바타</div>
 
-  document.getElementById('date').textContent = dateString;
-  document.getElementById('clock').textContent = timeString;
-}
+      <!-- 날짜 & 시계 -->
+      <div class="time-box">
+        <div id="date"></div>
+        <div id="clock"></div>
+      </div>
 
-setInterval(updateClock, 1000);
-updateClock();
+      <!-- 캘린더 -->
+      <div class="calendar-box">
+        <div class="calendar-header" id="calendar-title"></div>
+        <div class="calendar-grid" id="calendar"></div>
+      </div>
 
-function generateCalendar() {
-  const calendar = document.getElementById('calendar');
-  const title = document.getElementById('calendar-title');
+      <!-- 테마 선택 -->
+      <div class="theme-box">
+        <div class="theme-title">테마</div>
+        <button onclick="setTheme('default')">기본</button>
+        <button onclick="setTheme('dark')">다크</button>
+        <button onclick="setTheme('pink')">핑크</button>
+      </div>
 
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth(); // 0부터 시작
+      <!-- 관리자 -->
+      <div class="admin-box">
+        <button onclick="enterAdmin()">관리자</button>
+      </div>
 
-  title.textContent = `${year}년 ${month + 1}월`;
-  calendar.innerHTML = '';
+    </aside>
 
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
+    <!-- 오른쪽 바 -->
+    <main class="right-bar">
+      <h2>최근 일기</h2>
 
-  // 요일 빈칸
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement('div');
-    calendar.appendChild(empty);
-  }
+      <div class="diary-grid">
 
-  // 날짜 생성
-  for (let day = 1; day <= lastDate; day++) {
-    const cell = document.createElement('div');
-    cell.textContent = day;
-    cell.className = 'calendar-day';
+        <!-- 일기 카드 (샘플) -->
+        <div class="diary-item" data-id="1">
+          <div class="diary-title">일기 1</div>
 
-    cell.onclick = () => {
-      alert(`${year}년 ${month + 1}월 ${day}일 일기`);
-    };
+          <!-- 관리자 모드에서만 보이게 될 버튼들 -->
+          <div class="admin-controls">
+            <button class="edit-btn">편집</button>
+            <button class="delete-btn">삭제</button>
+          </div>
+        </div>
 
-    calendar.appendChild(cell);
-  }
-}
+        <div class="diary-item" data-id="2">일기 2</div>
+        <div class="diary-item" data-id="3">일기 3</div>
 
-generateCalendar();
+      </div>
+    </main>
 
-function setTheme(theme) {
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-}
+  </div>
 
-// 페이지 열릴 때 마지막 테마 적용
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.body.setAttribute('data-theme', savedTheme);
-} else {
-  document.body.setAttribute('data-theme', 'default');
-}
-
-let adminMode = false;
-const ADMIN_PASSWORD = "0125"; // 
-
-function enterAdmin() {
-  const input = prompt("관리자 비밀번호를 입력하세요");
-
-  if (input === ADMIN_PASSWORD) {
-    adminMode = true;
-    document.body.classList.add("admin");
-    alert("관리자 모드 활성화");
-  } else {
-    alert("비밀번호가 틀렸습니다");
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
