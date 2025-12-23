@@ -92,3 +92,21 @@ function enterAdmin() {
     alert("비밀번호가 틀렸습니다");
   }
 }
+
+function openDiary(title, date, content) {
+  // 목록 숨기기
+  document.querySelector('.diary-grid').style.display = 'none';
+
+  // 본문 보이기
+  const view = document.getElementById('diary-view');
+  view.style.display = 'block';
+
+  document.getElementById('diary-view-title').textContent = title;
+  document.getElementById('diary-view-date').textContent = date;
+  document.getElementById('diary-view-content').textContent = content;
+}
+
+function backToList() {
+  document.querySelector('.diary-grid').style.display = 'grid';
+  document.getElementById('diary-view').style.display = 'none';
+}
