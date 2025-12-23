@@ -1,74 +1,94 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>웅니의 미니홈피</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
+/* =====================
+   날짜 & 시계
+===================== */
+function updateClock() {
+  const now = new Date();
 
-    <!-- 왼쪽 바 -->
-    <aside class="left-bar">
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
 
-      <!-- 사이트 제목 -->
-      <div class="site-title">우승연 아카이브</div>
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
 
-      <!-- 아바타 -->
-      <div class="avatar-box">아바타</div>
+  document.getElementById('date').textContent =
+    `${year}년 ${month}월 ${day}일`;
 
-      <!-- 날짜 & 시계 -->
-      <div class="time-box">
-        <div id="date"></div>
-        <div id="clock"></div>
-      </div>
+  document.getElementById('clock').textContent =
+    `${hours}:${minutes}:${seconds}`;
+}
 
-      <!-- 캘린더 -->
-      <div class="calendar-box">
-        <div class="calendar-header" id="calendar-title"></div>
-        <div class="calendar-grid" id="calendar"></div>
-      </div>
+setInterval(updateClock, 1000);
+updateClock();
 
-      <!-- 테마 선택 -->
-      <div class="theme-box">
-        <div class="theme-title">테마</div>
-        <button onclick="setTheme('default')">기본</button>
-        <button onclick="setTheme('dark')">다크</button>
-        <button onclick="setTheme('pink')">핑크</button>
-      </div>
 
-      <!-- 관리자 -->
-      <div class="admin-box">
-        <button onclick="enterAdmin()">관리자</button>
-      </div>
+/* =====================
+   캘린더 생성
+===================== */
+function generateCalendar() {
+  const calendar = document.getElementById('calendar');
+  const title = document.getElementById('calendar-title');
 
-    </aside>
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
 
-    <!-- 오른쪽 바 -->
-    <main class="right-bar">
-      <h2>최근 일기</h2>
+  title.textContent = `${year}년 ${month + 1}월`;
+  calendar.innerHTML = '';
 
-      <div class="diary-grid">
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
 
-        <!-- 일기 카드 (샘플) -->
-        <div class="diary-item" data-id="1">
-          <div class="diary-title">일기 1</div>
+  // 빈칸
+  for (let i = 0; i < firstDay; i++) {
+    calendar.appendChild(document.createElement('div'));
+  }
 
-          <!-- 관리자 모드에서만 보이게 될 버튼들 -->
-          <div class="admin-controls">
-            <button class="edit-btn">편집</button>
-            <button class="delete-btn">삭제</button>
-          </div>
-        </div>
+  // 날짜
+  for (let day = 1; day <= lastDate; day++) {
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day';
+    cell.textContent = day;
 
-        <div class="diary-item" data-id="2">일기 2</div>
-        <div class="diary-item" data-id="3">일기 3</div>
+    cell.onclick = () => {
+      alert(`${year}년 ${month + 1}월 ${day}일 일기`);
+    };
 
-      </div>
-    </main>
+    calendar.appendChild(cell);
+  }
+}
 
-  </div>
+generateCalendar();
 
-  <script src="script.js"></script>
-</body>
-</html>
+
+/* =====================
+   테마 기능
+===================== */
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// 저장된 테마 불러오기
+const savedTheme = localStorage.getItem('theme') || 'default';
+document.body.setAttribute('data-theme', savedTheme);
+
+
+/* =====================
+   관리자 모드
+===================== */
+let adminMode = false;
+const ADMIN_PASSWORD = "0125";
+
+function enterAdmin() {
+  const input = prompt("관리자 비밀번호를 입력하세요");
+
+  if (input === ADMIN_PASSWORD) {
+    adminMode = true;
+    document.body.classList.add("admin");
+    alert("관리자 모드 활성화");
+  } else {
+    alert("비밀번호가 틀렸습니다");
+  }
+}
