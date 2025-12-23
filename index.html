@@ -74,6 +74,25 @@
               <span class="diary-title">일기 1</span>
             </div>
 
+            <!-- 일기 본문 화면 -->
+            <div id="diary-view" style="display: none;">
+              <button onclick="backToList()">← 목록으로</button>
+
+              <h2 id="diary-view-title">일기 제목</h2>
+              <p id="diary-view-date">2025년 12월 22일</p>
+
+              <div id="diary-view-content">
+              여기에 일기 본문이 들어가요 ✨
+              </div>
+
+  <!-- 관리자 전용 버튼 -->
+  <div class="admin-controls">
+    <button class="edit-btn">편집</button>
+    <button class="delete-btn">삭제</button>
+  </div>
+</div>
+
+
             <!-- 관리자 전용 버튼 (연습용) -->
             <div class="admin-controls">
               <button class="edit-btn">편집</button>
