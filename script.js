@@ -173,3 +173,15 @@ window.deleteDiary = (diaryId) => {
     backToList();
   }
 };
+
+let currentDiaryId = null;
+
+window.openDiary = (title, date, content, id) => {
+  currentDiaryId = id;
+  document.getElementById('diary-list').style.display = 'none';
+  const view = document.getElementById('diary-view');
+  view.style.display = 'block';
+  document.getElementById('diary-view-title').textContent = title;
+  document.getElementById('diary-view-date').textContent = date;
+  document.getElementById('diary-view-content').textContent = content;
+};
