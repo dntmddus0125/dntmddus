@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded',()=>{
+// DOMContentLoaded 없이 바로 실행하도록, HTML 맨 아래에 삽입 가정
+// 로딩 후 기능 활성화
+window.addEventListener('load',()=>{
+
+  // 로딩 화면 숨기고 컨테이너 표시
+  document.getElementById('loading-screen').style.display='none';
+  document.querySelector('.container').style.display='flex';
 
   // ===== 데이터 =====
   let diaries = [
