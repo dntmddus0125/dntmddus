@@ -25,6 +25,28 @@ const diaries = [
   }
 ];
 
+function renderDiaryList() {
+  const grid = document.querySelector('.diary-grid');
+  grid.innerHTML = ""; // 기존 내용 제거
+
+  diaries.forEach(diary => {
+    const item = document.createElement('div');
+    item.className = "diary-item";
+    item.textContent = diary.title;
+
+    // 클릭하면 본문 화면으로
+    item.onclick = () => {
+      openDiary(diary.title, diary.date, diary.content);
+    };
+
+    grid.appendChild(item);
+  });
+}
+
+// 페이지 로드 시 목록 생성
+renderDiaryList();
+
+
 /* =====================
    날짜 & 시계
 ===================== */
