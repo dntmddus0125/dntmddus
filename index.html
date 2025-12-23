@@ -12,17 +12,14 @@
     <!-- ===== 왼쪽 사이드바 ===== -->
     <aside class="left-bar">
 
-      <!-- 사이트 제목 -->
       <header class="site-header">
         <div class="site-title">우승연 아카이브</div>
       </header>
 
-      <!-- 아바타 -->
       <section class="avatar-section">
         <div class="avatar-box">아바타</div>
       </section>
 
-      <!-- 날짜 & 시계 -->
       <section class="time-section">
         <div class="time-box">
           <div id="date"></div>
@@ -30,7 +27,6 @@
         </div>
       </section>
 
-      <!-- 캘린더 -->
       <section class="calendar-section">
         <div class="calendar-box">
           <div class="calendar-header" id="calendar-title"></div>
@@ -38,7 +34,6 @@
         </div>
       </section>
 
-      <!-- 테마 변경 -->
       <section class="theme-section">
         <div class="theme-box">
           <div class="theme-title">테마</div>
@@ -48,7 +43,6 @@
         </div>
       </section>
 
-      <!-- 관리자 모드 -->
       <section class="admin-section">
         <div class="admin-box">
           <button onclick="enterAdmin()">관리자</button>
@@ -65,33 +59,39 @@
         <header class="main-header">
           <h2>최근 일기</h2>
         </header>
-
         <div class="diary-grid">
           <!-- JS에서 자동 생성 -->
         </div>
-
         <div class="admin-add">
-          <button onclick="addNewDiary()">+ 새 일기</button>
+          <button onclick="openEditor()">+ 새 일기</button>
         </div>
       </section>
 
       <!-- ===== 일기 본문 화면 ===== -->
       <section id="diary-view" style="display: none;">
         <button onclick="backToList()">← 목록으로</button>
-
         <h2 id="diary-view-title"></h2>
         <p id="diary-view-date"></p>
         <div id="diary-view-content"></div>
-
         <div class="admin-controls">
-          <button class="edit-btn" onclick="editDiary(currentDiaryId)">편집</button>
-          <button class="delete-btn" onclick="deleteDiary(currentDiaryId)">삭제</button>
+          <button class="edit-btn" onclick="openEditor(currentDiary)">편집</button>
+          <button class="delete-btn" onclick="deleteDiary(currentDiary.id)">삭제</button>
         </div>
-
       </section>
 
     </main>
 
+  </div>
+
+  <!-- ===== 블로그 스타일 모달 에디터 ===== -->
+  <div id="editor-modal" style="display:none; position:fixed; top:20%; left:30%; width:40%; background:white; border:2px solid #666; padding:15px; z-index:100;">
+    <h3 id="editor-title">새 일기 작성</h3>
+    <input type="text" id="editor-input-title" placeholder="제목" style="width:100%; margin-bottom:10px;">
+    <textarea id="editor-input-content" placeholder="내용" style="width:100%; height:150px;"></textarea>
+    <div style="text-align:right; margin-top:10px;">
+      <button onclick="saveDiary()">저장</button>
+      <button onclick="closeEditor()">취소</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
