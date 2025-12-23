@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>우승연 아카이브</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>우승연 아카이브</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 로딩 화면 -->
-<div id="loading-screen">
-  Loading...
-</div>
+  <div class="container">
 
-<div class="container" style="display:none;">
+    <!-- ===== 왼쪽 사이드바 ===== -->
+    <aside class="left-bar">
 
-  <!-- 왼쪽 사이드바 -->
-  <aside class="left-bar">
-    <header class="site-header">
-      <div class="site-title">우승연 아카이브</div>
-    </header>
+      <header class="site-header">
+        <div class="site-title">우승연 아카이브</div>
+      </header>
 
-    <section class="avatar-section">
-      <div class="avatar-box">아바타</div>
-    </section>
+      <section class="avatar-section">
+        <div class="avatar-box">아바타</div>
+      </section>
 
-    <section class="time-section">
-      <div class="time-box">
-        <div id="date"></div>
-        <div id="clock"></div>
-      </div>
-    </section>
+      <section class="time-section">
+        <div class="time-box">
+          <div id="date"></div>
+          <div id="clock"></div>
+        </div>
+      </section>
 
-    <section class="calendar-section">
-      <div class="calendar-box">
-        <div class="calendar-header" id="calendar-title"></div>
-        <div class="calendar-grid" id="calendar"></div>
-      </div>
-    </section>
+      <section class="calendar-section">
+        <div class="calendar-box">
+          <div class="calendar-header" id="calendar-title"></div>
+          <div class="calendar-grid" id="calendar"></div>
+        </div>
+      </section>
 
-    <section class="theme-section">
-      <div class="theme-box">
-        <div class="theme-title">테마</div>
-        <button id="theme-default">기본</button>
-        <button id="theme-dark">다크</button>
-        <button id="theme-pink">핑크</button>
-      </div>
-    </section>
-  </aside>
+      <section class="theme-section">
+        <div class="theme-box">
+          <div class="theme-title">테마</div>
+          <button id="theme-default">기본</button>
+          <button id="theme-dark">다크</button>
+          <button id="theme-pink">핑크</button>
+        </div>
+      </section>
 
-  <!-- 오른쪽 메인 영역 -->
-  <main class="right-bar">
-    <header class="main-header">
-      <h2>최근 일기</h2>
-      <div class="right-top-buttons">
+    </aside>
+
+    <!-- ===== 오른쪽 메인 영역 ===== -->
+    <main class="right-bar">
+
+      <!-- 관리자 & 새 일기 버튼 (오른쪽 위) -->
+      <div class="top-buttons">
         <button id="admin-btn">관리자</button>
         <button id="add-diary-btn">+ 새 일기</button>
       </div>
-    </header>
 
-    <section id="diary-list">
-      <div class="diary-grid"></div>
-    </section>
+      <!-- ===== 일기 목록 ===== -->
+      <section id="diary-list">
+        <header class="main-header">
+          <h2>최근 일기</h2>
+        </header>
+        <div class="diary-grid"></div>
+      </section>
 
-    <section id="diary-view" style="display:none;">
-      <button id="back-btn">← 목록으로</button>
-      <h2 id="diary-view-title"></h2>
-      <p id="diary-view-date"></p>
-      <div id="diary-view-content"></div>
-      <div class="admin-controls">
-        <button class="edit-btn">편집</button>
-        <button class="delete-btn">삭제</button>
-      </div>
-    </section>
-  </main>
+      <!-- ===== 일기 본문 ===== -->
+      <section id="diary-view" style="display:none;">
+        <button id="back-btn">← 목록으로</button>
+        <h2 id="diary-view-title"></h2>
+        <p id="diary-view-date"></p>
+        <div id="diary-view-content"></div>
 
-</div>
+        <div class="admin-controls">
+          <button class="edit-btn">편집</button>
+          <button class="delete-btn">삭제</button>
+        </div>
+      </section>
 
-<script src="script.js"></script>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
