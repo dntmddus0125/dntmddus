@@ -1,5 +1,5 @@
 // =====================
-// 일기 데이터
+// 1. 일기 데이터 관리
 // =====================
 const diaries = [
   {
@@ -25,6 +25,7 @@ const diaries = [
   }
 ];
 
+// 일기 목록 화면 렌더링
 function renderDiaryList() {
   const grid = document.querySelector('.diary-grid');
   grid.innerHTML = ""; // 기존 내용 제거
@@ -34,10 +35,8 @@ function renderDiaryList() {
     item.className = "diary-item";
     item.textContent = diary.title;
 
-    // 클릭하면 본문 화면으로
-    item.onclick = () => {
-      openDiary(diary.title, diary.date, diary.content);
-    };
+    // 클릭 시 본문 화면으로 이동
+    item.onclick = () => openDiary(diary.title, diary.date, diary.content);
 
     grid.appendChild(item);
   });
@@ -47,9 +46,9 @@ function renderDiaryList() {
 renderDiaryList();
 
 
-/* =====================
-   날짜 & 시계
-===================== */
+// =====================
+// 2. 날짜 & 시계
+// =====================
 function updateClock() {
   const now = new Date();
 
@@ -61,48 +60,43 @@ function updateClock() {
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
 
-  document.getElementById('date').textContent =
-    `${year}년 ${month}월 ${day}일`;
-
-  document.getElementById('clock').textContent =
-    `${hours}:${minutes}:${seconds}`;
+  document.getElementById('date').textContent = `${year}년 ${month}월 ${day}일`;
+  document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 }
 
+// 1초마다 시계 업데이트
 setInterval(updateClock, 1000);
 updateClock();
 
 
-/* =====================
-   캘린더 생성
-===================== */
+// =====================
+// 3. 캘린더 생성
+// =====================
 function generateCalendar() {
   const calendar = document.getElementById('calendar');
   const title = document.getElementById('calendar-title');
 
   const now = new Date();
   const year = now.getFullYear();
-  const month = now.getMonth();
+  const month = now.getMonth(); // 0 ~ 11
 
   title.textContent = `${year}년 ${month + 1}월`;
   calendar.innerHTML = '';
 
+  // 첫 요일 전 빈칸 추가
   const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
-
-  // 빈칸
   for (let i = 0; i < firstDay; i++) {
     calendar.appendChild(document.createElement('div'));
   }
 
-  // 날짜
+  // 날짜 셀 생성
+  const lastDate = new Date(year, month + 1, 0).getDate();
   for (let day = 1; day <= lastDate; day++) {
     const cell = document.createElement('div');
     cell.className = 'calendar-day';
     cell.textContent = day;
 
-    cell.onclick = () => {
-      alert(`${year}년 ${month + 1}월 ${day}일 일기`);
-    };
+    cell.onclick = () => alert(`${year}년 ${month + 1}월 ${day}일 일기`);
 
     calendar.appendChild(cell);
   }
@@ -111,9 +105,9 @@ function generateCalendar() {
 generateCalendar();
 
 
-/* =====================
-   테마 기능
-===================== */
+// =====================
+// 4. 테마 기능
+// =====================
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
@@ -124,9 +118,9 @@ const savedTheme = localStorage.getItem('theme') || 'default';
 document.body.setAttribute('data-theme', savedTheme);
 
 
-/* =====================
-   관리자 모드
-===================== */
+// =====================
+// 5. 관리자 모드
+// =====================
 let adminMode = false;
 const ADMIN_PASSWORD = "0125";
 
@@ -142,11 +136,15 @@ function enterAdmin() {
   }
 }
 
+
+// =====================
+// 6. 일기 본문 화면
+// =====================
 function openDiary(title, date, content) {
   // 목록 숨기기
-  document.querySelector('.diary-grid').style.display = 'none';
+  document.getElementById('diary-list').style.display = 'none';
 
-  // 본문 보이기
+  // 본문 화면 보이기
   const view = document.getElementById('diary-view');
   view.style.display = 'block';
 
@@ -156,10 +154,14 @@ function openDiary(title, date, content) {
 }
 
 function backToList() {
-  document.querySelector('.diary-grid').style.display = 'grid';
+  document.getElementById('diary-list').style.display = 'block';
   document.getElementById('diary-view').style.display = 'none';
 }
 
+
+// =====================
+// 7. 새 일기 추가
+// =====================
 function addNewDiary() {
   if (!adminMode) {
     alert("관리자 모드에서만 추가 가능합니다.");
@@ -184,10 +186,10 @@ function addNewDiary() {
     image: null
   };
 
-  // 배열에 추가
-  diaries.unshift(newDiary); // 최신 일기를 맨 앞에
+  // 배열에 추가 (맨 앞에 넣어서 최신 일기 표시)
+  diaries.unshift(newDiary);
 
-  // 목록 화면 다시 그리기
+  // 목록 화면 다시 렌더링
   renderDiaryList();
 
   alert("새 일기가 추가되었습니다!");
