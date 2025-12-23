@@ -67,3 +67,18 @@ if (savedTheme) {
 } else {
   document.body.setAttribute('data-theme', 'default');
 }
+
+let adminMode = false;
+const ADMIN_PASSWORD = "0125"; // 
+
+function enterAdmin() {
+  const input = prompt("관리자 비밀번호를 입력하세요");
+
+  if (input === ADMIN_PASSWORD) {
+    adminMode = true;
+    document.body.classList.add("admin");
+    alert("관리자 모드 활성화");
+  } else {
+    alert("비밀번호가 틀렸습니다");
+  }
+}
