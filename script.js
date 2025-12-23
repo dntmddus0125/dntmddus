@@ -159,3 +159,36 @@ function backToList() {
   document.querySelector('.diary-grid').style.display = 'grid';
   document.getElementById('diary-view').style.display = 'none';
 }
+
+function addNewDiary() {
+  if (!adminMode) {
+    alert("관리자 모드에서만 추가 가능합니다.");
+    return;
+  }
+
+  const title = prompt("일기 제목을 입력하세요:");
+  if (!title) return;
+
+  const content = prompt("일기 내용을 입력하세요:");
+  if (!content) return;
+
+  const date = new Date();
+  const formattedDate = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+
+  // 새 일기 객체 생성
+  const newDiary = {
+    id: diaries.length + 1,
+    title: title,
+    date: formattedDate,
+    content: content,
+    image: null
+  };
+
+  // 배열에 추가
+  diaries.unshift(newDiary); // 최신 일기를 맨 앞에
+
+  // 목록 화면 다시 그리기
+  renderDiaryList();
+
+  alert("새 일기가 추가되었습니다!");
+}
