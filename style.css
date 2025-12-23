@@ -167,3 +167,30 @@ body[data-theme="pink"] .left-bar {
 body[data-theme="pink"] .right-bar {
   background: #fff0f7;
 }
+
+/* ===== 관리자 버튼 ===== */
+.admin-box {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.admin-box button {
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* ===== 관리자 전용 UI ===== */
+.edit-btn,
+.delete-btn {
+  display: none;
+  font-size: 11px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+/* 관리자 모드일 때만 보이게 */
+body.admin .edit-btn,
+body.admin .delete-btn {
+  display: inline-block;
+}
