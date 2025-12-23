@@ -12,14 +12,17 @@
     <!-- ===== 왼쪽 사이드바 ===== -->
     <aside class="left-bar">
 
+      <!-- 사이트 제목 -->
       <header class="site-header">
         <div class="site-title">우승연 아카이브</div>
       </header>
 
+      <!-- 아바타 -->
       <section class="avatar-section">
         <div class="avatar-box">아바타</div>
       </section>
 
+      <!-- 날짜 & 시계 -->
       <section class="time-section">
         <div class="time-box">
           <div id="date"></div>
@@ -27,6 +30,7 @@
         </div>
       </section>
 
+      <!-- 캘린더 -->
       <section class="calendar-section">
         <div class="calendar-box">
           <div class="calendar-header" id="calendar-title"></div>
@@ -34,6 +38,7 @@
         </div>
       </section>
 
+      <!-- 테마 변경 -->
       <section class="theme-section">
         <div class="theme-box">
           <div class="theme-title">테마</div>
@@ -43,6 +48,7 @@
         </div>
       </section>
 
+      <!-- 관리자 모드 -->
       <section class="admin-section">
         <div class="admin-box">
           <button onclick="enterAdmin()">관리자</button>
@@ -56,35 +62,34 @@
 
       <!-- ===== 일기 목록 화면 ===== -->
       <section id="diary-list">
-
         <header class="main-header">
           <h2>최근 일기</h2>
         </header>
 
+        <!-- 일기 카드 그리드는 JS에서 자동 생성 -->
+        <div class="diary-grid">
+          <!-- renderDiaryList() 함수가 여기에 채워줌 -->
+        </div>
 
+        <!-- 관리자 모드에서만 보이는 새 일기 버튼 -->
+        <div class="admin-add" style="text-align:center; margin:10px 0;">
+          <button onclick="addNewDiary()">+ 새 일기</button>
+        </div>
       </section>
 
       <!-- ===== 일기 본문 화면 ===== -->
       <section id="diary-view" style="display: none;">
-
         <button onclick="backToList()">← 목록으로</button>
 
         <h2 id="diary-view-title"></h2>
         <p id="diary-view-date"></p>
-
         <div id="diary-view-content"></div>
 
-        <!-- 관리자 전용 -->
+        <!-- 관리자 전용 버튼 -->
         <div class="admin-controls">
           <button class="edit-btn">편집</button>
           <button class="delete-btn">삭제</button>
         </div>
-
-        <!-- 관리자 전용: 새 일기 추가 -->
-        <div class="admin-add" style="text-align:center; margin:10px 0;">
-          <button onclick="addNewDiary()">+ 새 일기</button>
-        </div>
-
       </section>
 
     </main>
