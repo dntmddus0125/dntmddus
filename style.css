@@ -97,3 +97,73 @@ body {
 .calendar-day:hover {
   background: #dedeff;
 }
+
+/* ===== 테마 버튼 ===== */
+.theme-box {
+  margin-top: 15px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #aaa;
+  text-align: center;
+}
+
+.theme-title {
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.theme-box button {
+  font-size: 11px;
+  margin: 3px;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+/* ===== 기본 테마 ===== */
+body[data-theme="default"] {
+  background: #f2f2f2;
+  color: #000;
+}
+
+body[data-theme="default"] .container {
+  background: white;
+}
+
+/* ===== 다크 테마 ===== */
+body[data-theme="dark"] {
+  background: #111;
+  color: #eee;
+}
+
+body[data-theme="dark"] .container {
+  background: #222;
+  border-color: #555;
+}
+
+body[data-theme="dark"] .left-bar {
+  background: #333;
+}
+
+body[data-theme="dark"] .right-bar {
+  background: #222;
+}
+
+/* ===== 핑크 테마 (싸이월드 감성) ===== */
+body[data-theme="pink"] {
+  background: #ffe6f0;
+  color: #4a0033;
+}
+
+body[data-theme="pink"] .container {
+  background: #fff0f7;
+  border-color: #ff99cc;
+}
+
+body[data-theme="pink"] .left-bar {
+  background: #ffd6e8;
+}
+
+body[data-theme="pink"] .right-bar {
+  background: #fff0f7;
+}
