@@ -1,6 +1,4 @@
-/* =====================
-   1. 기본 설정
-===================== */
+/* 기본 설정 */
 body {
   background: #f2f2f2;
   font-family: Arial, sans-serif;
@@ -15,10 +13,7 @@ body {
   border: 2px solid #999;
 }
 
-
-/* =====================
-   2. 레이아웃
-===================== */
+/* 레이아웃 */
 .left-bar {
   width: 250px;
   background: #e8e8ff;
@@ -31,10 +26,7 @@ body {
   padding: 15px;
 }
 
-
-/* =====================
-   3. 공통 박스 스타일
-===================== */
+/* 공통 박스 */
 .avatar-box,
 .time-box,
 .calendar-box,
@@ -46,10 +38,7 @@ body {
   text-align: center;
 }
 
-
-/* =====================
-   4. 사이트 제목
-===================== */
+/* 사이트 제목 */
 .site-title {
   font-size: 20px;
   font-weight: bold;
@@ -62,10 +51,7 @@ body {
   letter-spacing: 1px;
 }
 
-
-/* =====================
-   5. 날짜 & 시계
-===================== */
+/* 날짜 & 시계 */
 #date {
   font-size: 12px;
   color: #555;
@@ -77,10 +63,7 @@ body {
   font-weight: bold;
 }
 
-
-/* =====================
-   6. 캘린더
-===================== */
+/* 캘린더 */
 .calendar-header {
   font-size: 13px;
   font-weight: bold;
@@ -107,10 +90,7 @@ body {
   background: #dedeff;
 }
 
-
-/* =====================
-   7. 일기 영역
-===================== */
+/* 일기 영역 */
 .diary-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -128,10 +108,7 @@ body {
   cursor: pointer;
 }
 
-
-/* =====================
-   8. 테마 버튼
-===================== */
+/* 테마 버튼 */
 .theme-title {
   font-size: 12px;
   font-weight: bold;
@@ -145,10 +122,7 @@ body {
   cursor: pointer;
 }
 
-
-/* =====================
-   9. 관리자 관련
-===================== */
+/* 관리자 */
 .admin-box {
   margin-top: 10px;
   text-align: center;
@@ -160,7 +134,6 @@ body {
   cursor: pointer;
 }
 
-/* 편집/삭제 버튼 숨김 */
 .edit-btn,
 .delete-btn {
   display: none;
@@ -169,67 +142,35 @@ body {
   cursor: pointer;
 }
 
-/* 관리자 모드일 때 보이기 */
 body.admin .edit-btn,
 body.admin .delete-btn {
   display: inline-block;
 }
 
-/* 새 일기 추가 버튼 숨김 */
 .admin-add {
   display: none;
 }
 
-/* 관리자 모드일 때 보이기 */
 body.admin .admin-add {
   display: block;
 }
 
-
-/* =====================
-   10. 테마 설정
-===================== */
-
-/* 기본 테마 */
+/* 테마 설정 */
 body[data-theme="default"] {
   background: #f2f2f2;
   color: #000;
 }
 
-/* 다크 테마 */
 body[data-theme="dark"] {
   background: #111;
   color: #eee;
 }
 
-body[data-theme="dark"] .container {
-  background: #222;
-  border-color: #555;
-}
+body[data-theme="dark"] .container { background: #222; border-color: #555; }
+body[data-theme="dark"] .left-bar { background: #333; }
+body[data-theme="dark"] .right-bar { background: #222; }
 
-body[data-theme="dark"] .left-bar {
-  background: #333;
-}
-
-body[data-theme="dark"] .right-bar {
-  background: #222;
-}
-
-/* 핑크 테마 (싸이월드 감성) */
-body[data-theme="pink"] {
-  background: #ffe6f0;
-  color: #4a0033;
-}
-
-body[data-theme="pink"] .container {
-  background: #fff0f7;
-  border-color: #ff99cc;
-}
-
-body[data-theme="pink"] .left-bar {
-  background: #ffd6e8;
-}
-
-body[data-theme="pink"] .right-bar {
-  background: #fff0f7;
-}
+body[data-theme="pink"] { background: #ffe6f0; color: #4a0033; }
+body[data-theme="pink"] .container { background: #fff0f7; border-color: #ff99cc; }
+body[data-theme="pink"] .left-bar { background: #ffd6e8; }
+body[data-theme="pink"] .right-bar { background: #fff0f7; }
