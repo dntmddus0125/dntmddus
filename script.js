@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
-  // ===== 기본 데이터 =====
+  // ===== 데이터 =====
   let diaries = [
-    {id:1,title:"",date:"2025-12-22",content:"오늘은 진짜 귀여운 하루였다…"},
-    {id:2,title:"",date:"2025-12-21",content:"비가 와서 기분이 이상했다."},
-    {id:3,title:"",date:"2025-12-20",content:"친구랑 놀았다~ 재밌었다!"}
+    {id:1,date:"2025-12-22",content:"오늘은 진짜 귀여운 하루였다…"},
+    {id:2,date:"2025-12-21",content:"비가 와서 기분이 이상했다."},
+    {id:3,date:"2025-12-20",content:"친구랑 놀았다~ 재밌었다!"}
   ];
 
-  // ===== 요소 선택 =====
   const diaryGrid=document.querySelector('.diary-grid');
   const diaryListSection=document.getElementById('diary-list');
   const diaryViewSection=document.getElementById('diary-view');
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const adminBtn=document.getElementById('admin-btn');
   const addDiaryBtn=document.getElementById('add-diary-btn');
   const backBtn=document.getElementById('back-btn');
-  const editBtn=document.querySelector('.edit-btn');
   const deleteBtn=document.querySelector('.delete-btn');
 
   let adminMode=false;
@@ -45,7 +43,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('theme-pink').addEventListener('click',()=>setTheme('pink'));
   function setTheme(theme){document.body.setAttribute('data-theme',theme);localStorage.setItem('theme',theme);}
 
-  // ===== 관리자 모드 =====
+  // ===== 관리자 =====
   adminBtn.addEventListener('click',()=>{
     if(adminMode){alert("이미 관리자 모드입니다."); return;}
     const pw=prompt("관리자 비밀번호를 입력하세요");
@@ -59,7 +57,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     diaries.forEach(diary=>{
       const item=document.createElement('div');
       item.className='diary-item';
-      item.textContent=diary.date; // 날짜 표시
+      item.textContent=diary.date;
       item.addEventListener('click',()=>openDiary(diary));
       diaryGrid.appendChild(item);
     });
@@ -74,7 +72,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     diaryDateEl.textContent=diary.date;
     diaryContentEl.textContent=diary.content;
   }
-  window.openDiary=openDiary;
 
   backBtn.addEventListener('click',()=>{
     diaryListSection.style.display='block';
@@ -88,7 +85,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!date)return;
     const content=prompt("일기 내용을 입력하세요:");
     if(!content)return;
-    diaries.unshift({id:diaries.length+1,title:"",date:date,content:content});
+    diaries.unshift({id:diaries.length+1,date:date,content:content});
     renderDiaryList();
     alert("새 일기가 추가되었습니다!");
   });
@@ -100,4 +97,36 @@ document.addEventListener('DOMContentLoaded',()=>{
       diaries=diaries.filter(d=>d.id!==currentDiary.id);
       renderDiaryList();
       diaryListSection.style.display='block';
-      diaryVie
+      diaryViewSection.style.display='none';
+      alert("일기가 삭제되었습니다!");
+    }
+  });
+
+  // ===== 캘린더 =====
+  const calendarEl=document.getElementById('calendar');
+  const calendarTitle=document.getElementById('calendar-title');
+  function generateCalendar(){
+    const now=new Date();
+    const year=now.getFullYear();
+    const month=now.getMonth();
+    calendarTitle.textContent=`${year}년 ${month+1}월`;
+    calendarEl.innerHTML="";
+    const firstDay=new Date(year,month,1).getDay();
+    const lastDate=new Date(year,month+1,0).getDate();
+    for(let i=0;i<firstDay;i++){calendarEl.appendChild(document.createElement('div'));}
+    for(let d=1;d<=lastDate;d++){
+      const cell=document.createElement('div');
+      cell.className='calendar-day';
+      const dayStr=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      cell.textContent=d;
+      cell.addEventListener('click',()=>{
+        const diary=diaries.find(di=>di.date===dayStr);
+        if(diary) openDiary(diary);
+        else alert(`${dayStr} 일기가 없습니다.`);
+      });
+      calendarEl.appendChild(cell);
+    }
+  }
+  generateCalendar();
+
+});
