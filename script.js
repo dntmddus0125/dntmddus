@@ -1,4 +1,6 @@
-let diaries = [
+document.addEventListener('DOMContentLoaded', () => {
+  
+  let diaries = [
   {id:1,title:"일기 1",date:"2025-12-22",content:"오늘은 진짜 귀여운 하루였다…",image:null},
   {id:2,title:"일기 2",date:"2025-12-21",content:"비가 와서 기분이 이상했다.",image:null},
   {id:3,title:"일기 3",date:"2025-12-20",content:"친구랑 놀았다~ 재밌었다!",image:null}
@@ -177,3 +179,5 @@ deleteBtn.addEventListener('click',()=>{
 
 // 취소 버튼
 cancelBtn.addEventListener('click',closeEditor);
+
+});
