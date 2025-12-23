@@ -12,33 +12,28 @@
     <!-- ===== 왼쪽 사이드바 ===== -->
     <aside class="left-bar">
 
-      <!-- 사이트 제목 -->
       <header class="site-header">
         <div class="site-title">우승연 아카이브</div>
       </header>
 
-      <!-- 아바타 -->
       <section class="avatar-section">
         <div class="avatar-box">아바타</div>
       </section>
 
-      <!-- 날짜 / 시간 -->
       <section class="time-section">
         <div class="time-box">
-          <div id="date">2025년 12월 22일</div>
-          <div id="clock">00:00:00</div>
+          <div id="date"></div>
+          <div id="clock"></div>
         </div>
       </section>
 
-      <!-- 캘린더 -->
       <section class="calendar-section">
         <div class="calendar-box">
-          <div class="calendar-header" id="calendar-title">2025년 12월</div>
+          <div class="calendar-header" id="calendar-title"></div>
           <div class="calendar-grid" id="calendar"></div>
         </div>
       </section>
 
-      <!-- 테마 변경 -->
       <section class="theme-section">
         <div class="theme-box">
           <div class="theme-title">테마</div>
@@ -48,7 +43,6 @@
         </div>
       </section>
 
-      <!-- 관리자 -->
       <section class="admin-section">
         <div class="admin-box">
           <button onclick="enterAdmin()">관리자</button>
@@ -60,51 +54,45 @@
     <!-- ===== 오른쪽 메인 영역 ===== -->
     <main class="right-bar">
 
-      <header class="main-header">
-        <h2>최근 일기</h2>
-      </header>
+      <!-- ===== 일기 목록 화면 ===== -->
+      <section id="diary-list">
 
-      <!-- 일기 미리보기 그리드 -->
-      <section class="diary-section">
+        <header class="main-header">
+          <h2>최근 일기</h2>
+        </header>
+
         <div class="diary-grid">
-
-          <!-- 일기 카드 (미리보기용) -->
           <div class="diary-item"
-              onclick="openDiary('일기 1', '2025년 12월 22일', '오늘은 진짜 귀여운 하루였다…')">
-              일기 1
-            </div>
-
-            <!-- 일기 본문 화면 -->
-            <div id="diary-view" style="display: none;">
-              <button onclick="backToList()">← 목록으로</button>
-
-              <h2 id="diary-view-title">일기 제목</h2>
-              <p id="diary-view-date">2025년 12월 22일</p>
-
-              <div id="diary-view-content">
-              여기에 일기 본문이 들어가요 ✨
-              </div>
-
-            <!-- 관리자 전용 버튼 -->
-              <div class="admin-controls">
-              <button class="edit-btn">편집</button>
-              <button class="delete-btn">삭제</button>
-            </div>
+               onclick="openDiary(
+                 '일기 1',
+                 '2025년 12월 22일',
+                 '오늘은 진짜 귀여운 하루였다…'
+               )">
+            일기 1
           </div>
 
-          <div class="diary-item">
-            <div class="diary-preview">
-              <span class="diary-title">일기 2</span>
-            </div>
-          </div>
-
-          <div class="diary-item">
-            <div class="diary-preview">
-              <span class="diary-title">일기 3</span>
-            </div>
-          </div>
-
+          <div class="diary-item">일기 2</div>
+          <div class="diary-item">일기 3</div>
         </div>
+
+      </section>
+
+      <!-- ===== 일기 본문 화면 ===== -->
+      <section id="diary-view" style="display: none;">
+
+        <button onclick="backToList()">← 목록으로</button>
+
+        <h2 id="diary-view-title"></h2>
+        <p id="diary-view-date"></p>
+
+        <div id="diary-view-content"></div>
+
+        <!-- 관리자 전용 -->
+        <div class="admin-controls">
+          <button class="edit-btn">편집</button>
+          <button class="delete-btn">삭제</button>
+        </div>
+
       </section>
 
     </main>
