@@ -1,5 +1,5 @@
 /* =====================
-   기본 설정
+   1. 기본 설정
 ===================== */
 body {
   background: #f2f2f2;
@@ -17,7 +17,7 @@ body {
 
 
 /* =====================
-   레이아웃
+   2. 레이아웃
 ===================== */
 .left-bar {
   width: 250px;
@@ -33,7 +33,7 @@ body {
 
 
 /* =====================
-   공통 박스 스타일
+   3. 공통 박스 스타일
 ===================== */
 .avatar-box,
 .time-box,
@@ -48,7 +48,7 @@ body {
 
 
 /* =====================
-   사이트 제목
+   4. 사이트 제목
 ===================== */
 .site-title {
   font-size: 20px;
@@ -64,7 +64,7 @@ body {
 
 
 /* =====================
-   날짜 & 시계
+   5. 날짜 & 시계
 ===================== */
 #date {
   font-size: 12px;
@@ -79,7 +79,7 @@ body {
 
 
 /* =====================
-   캘린더
+   6. 캘린더
 ===================== */
 .calendar-header {
   font-size: 13px;
@@ -109,7 +109,7 @@ body {
 
 
 /* =====================
-   일기 영역
+   7. 일기 영역
 ===================== */
 .diary-grid {
   display: grid;
@@ -130,7 +130,7 @@ body {
 
 
 /* =====================
-   테마 버튼
+   8. 테마 버튼
 ===================== */
 .theme-title {
   font-size: 12px;
@@ -147,7 +147,7 @@ body {
 
 
 /* =====================
-   관리자
+   9. 관리자 관련
 ===================== */
 .admin-box {
   margin-top: 10px;
@@ -160,6 +160,7 @@ body {
   cursor: pointer;
 }
 
+/* 편집/삭제 버튼 숨김 */
 .edit-btn,
 .delete-btn {
   display: none;
@@ -168,34 +169,34 @@ body {
   cursor: pointer;
 }
 
-/* 관리자 모드 */
+/* 관리자 모드일 때 보이기 */
 body.admin .edit-btn,
 body.admin .delete-btn {
   display: inline-block;
 }
 
-/* 관리자 전용: 새 일기 버튼 숨김 */
+/* 새 일기 추가 버튼 숨김 */
 .admin-add {
   display: none;
 }
 
-/* 관리자 모드에서 보이게 */
+/* 관리자 모드일 때 보이기 */
 body.admin .admin-add {
   display: block;
 }
 
 
 /* =====================
-   테마 설정
+   10. 테마 설정
 ===================== */
 
-/* 기본 */
+/* 기본 테마 */
 body[data-theme="default"] {
   background: #f2f2f2;
   color: #000;
 }
 
-/* 다크 */
+/* 다크 테마 */
 body[data-theme="dark"] {
   background: #111;
   color: #eee;
@@ -214,7 +215,7 @@ body[data-theme="dark"] .right-bar {
   background: #222;
 }
 
-/* 핑크 (싸이월드 감성) */
+/* 핑크 테마 (싸이월드 감성) */
 body[data-theme="pink"] {
   background: #ffe6f0;
   color: #4a0033;
