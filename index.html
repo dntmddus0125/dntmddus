@@ -66,13 +66,11 @@
           <h2>최근 일기</h2>
         </header>
 
-        <!-- 일기 카드 그리드는 JS에서 자동 생성 -->
         <div class="diary-grid">
-          <!-- renderDiaryList() 함수가 여기에 채워줌 -->
+          <!-- JS에서 자동 생성 -->
         </div>
 
-        <!-- 관리자 모드에서만 보이는 새 일기 버튼 -->
-        <div class="admin-add" style="text-align:center; margin:10px 0;">
+        <div class="admin-add">
           <button onclick="addNewDiary()">+ 새 일기</button>
         </div>
       </section>
@@ -85,7 +83,6 @@
         <p id="diary-view-date"></p>
         <div id="diary-view-content"></div>
 
-        <!-- 관리자 전용 버튼 -->
         <div class="admin-controls">
           <button class="edit-btn">편집</button>
           <button class="delete-btn">삭제</button>
